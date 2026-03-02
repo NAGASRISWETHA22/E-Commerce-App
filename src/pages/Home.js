@@ -61,7 +61,7 @@ const Home = () => {
           <select className="filter-select" onChange={(e) => setCategory(e.target.value)}>
             <option value="all">All Categories</option>
             <option value="electronics">Electronics</option>
-            <option value="jewellers">Jewellers</option>
+            <option value="jewelery">Jewelery</option>
             <option value="men's clothing">Men's Clothing</option>
             <option value="women's clothing">Women's Clothing</option>
           </select>

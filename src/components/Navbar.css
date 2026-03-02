@@ -51,12 +51,23 @@
     position: absolute;
     right: 0;
     top: 50px;
-    width: 300px;
+    width: 320px;
     background: white;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     padding: 15px;
     border: 1px solid #eee;
+}
+
+@media (max-width: 600px) {
+    .navbar { padding: 15px 5%; flex-direction: column; gap: 10px; }
+    .cart-preview-box {
+        position: fixed;
+        right: 5%;
+        left: 5%;
+        top: 100px;
+        width: auto;
+    }
 }
 
 .cart-header {
@@ -101,7 +112,10 @@
     background: #27ae60;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
 }
