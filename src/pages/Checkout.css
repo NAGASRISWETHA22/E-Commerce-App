@@ -1,6 +1,7 @@
 .checkout-container {
   padding: 40px 10%;
-  background: #f9f9f9;
+  background-color: var(--bg-color);
+    color: var(--text-primary);
   min-height: 80vh;
 }
 .checkout-content {
@@ -11,18 +12,22 @@
 }
 .cart-summary {
   flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: var(--card-bg); 
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 12px;
 }
 .payment-section {
   flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   min-width: 300px;
+  background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 12px;
 }
 
 .checkout-item {
@@ -68,4 +73,27 @@
 }
 .pay-btn:hover {
   background: #2c3e50;
+}
+.remove-item-btn {
+    background: none;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+    transition: 0.3s;
+}
+
+.remove-item-btn:hover {
+    background: #ff4d4d;
+    color: white;
+}
+.item-info h4 {
+    color: var(--text-primary);
+}
+
+.item-info p {
+    color: var(--text-secondary);
 }

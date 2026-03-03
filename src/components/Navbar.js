@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
-const Navbar = () => {
+
+const Navbar = ({ darkMode, setDarkMode }) => {
   const { cart, cartCount } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -11,6 +12,7 @@ const Navbar = () => {
       <Link to="/" className="logo"> Happy Cart</Link>
       
       <div className="nav-actions">
+
         <Link to="/" className="nav-link">Home</Link>
         
         <div className="cart-wrapper">

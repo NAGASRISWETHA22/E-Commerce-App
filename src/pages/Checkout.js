@@ -4,7 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './Checkout.css';
 
-const stripePromise = loadStripe('pk_Key');
+const stripePromise = loadStripe('pk_test_your_key');
 
 const CheckoutForm = ({ total }) => {
   const stripe = useStripe();
@@ -13,15 +13,13 @@ const CheckoutForm = ({ total }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) return;
-
-    alert("Payment Logic Triggered!");
-   
+    alert("Payment Logic Triggered! Amount: $" + total.toFixed(2));
   };
 
   return (
     <form onSubmit={handleSubmit} className="stripe-form">
       <CardElement className="card-input" />
-      <button type="submit" disabled={!stripe} className="pay-btn">
+      <button type="submit" disabled={!stripe || total === 0} className="pay-btn">
         Pay Now (${total.toFixed(2)})
       </button>
     </form>
@@ -29,7 +27,7 @@ const CheckoutForm = ({ total }) => {
 };
 
 const Checkout = () => {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart();
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
@@ -37,15 +35,26 @@ const Checkout = () => {
       <h2>Order Summary</h2>
       <div className="checkout-content">
         <div className="cart-summary">
-          {cart.map(item => (
-            <div key={item.id} className="checkout-item">
-              <img src={item.image} alt={item.title} />
-              <div className="item-info">
-                <h4>{item.title}</h4>
-                <p>{item.quantity} x ${item.price}</p>
+          {cart.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            cart.map(item => (
+              <div key={item.id} className="checkout-item">
+                <img src={item.image} alt={item.title} />
+                <div className="item-info">
+                  <h4>{item.title}</h4>
+                  <p>{item.quantity} x ${item.price}</p>
+                  
+                  <button 
+                    className="remove-item-btn"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    🗑 Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
           <h3 className="final-total">Total Amount: ${total.toFixed(2)}</h3>
         </div>
 
